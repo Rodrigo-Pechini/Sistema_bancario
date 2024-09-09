@@ -25,24 +25,24 @@ while True:
         if opc == 1:
             deposito = int(input('Deposito de R$'))
             if deposito > 0:
+                print(f'\033[32mDeposito de R${deposito} foi efetuado\033[m')
                 saldo_total += deposito
                 operacoes['deposito'] = deposito
 
                 #adiciona uma copia do dicionario(operacoes) na lista(extrato)
                 extrato.append(operacoes.copy())
                 operacoes.clear()
-                print('Deposito realizado com sucesso!')
             else:
                 print('Digite um valor valido para deposito')
         
         #Retirando um valor do saldo_total
         elif opc == 2:
-            print(saldo_total)
             retirar = int(input('Retirada de R$'))
 
             if retirar < saldo_total and retirar <= 500 and saques < 3:
                 saldo_total -= retirar
                 operacoes['saque'] = retirar
+                print(f'\033[31mSaque de R${retirar} foi efetuado\033[m')
 
                 #adiciona uma copia do dicionario(operacoes) na lista(extrato)
                 extrato.append(operacoes.copy())
@@ -50,11 +50,11 @@ while True:
                 saques += 1
             else:
                 if retirar > 500 and saques < 3:
-                    print('O maximo que se pode retirar é R$500')
+                    print('\033[31mErro!! O maximo que se pode retirar é R$500\033[m')
                 elif retirar <= 500 and saques == 3:
-                    print('O limite de saques diarios foi atingido')
+                    print('\033[31mErro!! O limite de saques diarios foi atingido\033[m')
                 else:
-                    print('Saldo insuficiente.')
+                    print('\033[31mErro!! Saldo insuficiente.\033[m')
                 
         #Exibindo o extrato do ultimo deposito e o ultimo saque
         elif opc == 3:
