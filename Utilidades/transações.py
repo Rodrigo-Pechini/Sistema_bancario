@@ -1,4 +1,4 @@
-from Utilizades import validador
+from Utilidades import validador
 
 def transacao(msg):
     while True:

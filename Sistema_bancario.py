@@ -1,6 +1,6 @@
-from Utilizades import transações
-from Utilizades import validador
-from Utilizades import interface
+from Utilidades import transações
+from Utilidades import validador
+from Utilidades import interface
 import pytz
 from datetime import datetime
 
