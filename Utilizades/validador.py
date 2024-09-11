@@ -4,4 +4,4 @@ def validadorInt(msg):
             valor = int(input(msg))
             return valor
         except ValueError:
-            print('Erro!! Valor invalido digite novamente.')
+            print('\033[31mErro!! Valor invalido digite novamente.\033[m')
