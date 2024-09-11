@@ -14,46 +14,29 @@ operacoes = 0
 extrato = []
 
 while True:
-    
-    interface.menu()
+    interface.menuDeUsuarios()
+    interface.menuDeOperacoes()
     opc = validador.validadorInt('Digite uma das opções: ')
 
     #Depositando um valor no saldo total e no deposito
     if opc == 1:
-        if operacoes < 10:
-            deposito = transações.transacao('Deposito de R$')
-            if deposito > 0:
-                print(f'\033[32mDeposito de R${deposito} foi efetuado\033[m')
-                
-                saldo_total += deposito
-                extrato.append(f'Deposito de {deposito:.2f} as {DATA_HORA_ATUAL}')
-                operacoes += 1
-                
-            else:
-                print('Digite um valor valido para deposito')
+        deposito = transações.deposito(operacoes)
+        if type(deposito) == type(int()):
+            saldo_total += deposito
+            extrato.append(f'Deposito de R${deposito:.2f} as {DATA_HORA_ATUAL}')
+            operacoes += 1
         else:
-            print('\033[31mErro!! Limite de operações diarias atingido\033[m')
+            print(deposito)
 
     #Retirando um valor do saldo_total
     elif opc == 2:
-        if operacoes < 10:
-            retirar = transações.transacao('Saque de R$')
-
-            if retirar < saldo_total and retirar <= 500:
-                print(f'\033[32mSaque de R${retirar} foi efetuado\033[m')
-
-                saldo_total -= retirar
-                extrato.append(f'Saque de {retirar:.2f} as {DATA_HORA_ATUAL}')
-                operacoes += 1
-
-            else:
-                if retirar > 500 and operacoes < 10:
-                    print('\033[31mErro!! O maximo que se pode retirar é R$500\033[m')
-                else:
-                    print('\033[31mErro!! Saldo insuficiente.\033[m')
+        saque = transações.saque(operacoes,saldo_total=saldo_total)
+        if type(saque) == type(int()):
+            saldo_total -= saque
+            extrato.append(f'Saque de R${saque} as {DATA_HORA_ATUAL}')
+            operacoes += 1
         else:
-            print('\033[31mErro!! Limite de operações diarias atingido\033[m')
-                
+            print(saque)
     #Exibindo o extrato do ultimo deposito e o ultimo saque
     elif opc == 3:
         if len(extrato) > 0:

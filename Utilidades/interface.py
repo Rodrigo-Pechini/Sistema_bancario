@@ -1,4 +1,4 @@
-def menu():
+def menuDeOperacoes():
     print(
         f"""
 {'=' * 20}
@@ -10,3 +10,13 @@ def menu():
 {'=' * 20}
     """
     )
+
+
+def menuDeUsuarios():
+    print(f"""
+{'=' * 30}
+        MENU
+    [1] Cadastrar usuario
+    [2] Acessar usuario
+{'=' * 30}
+""")
