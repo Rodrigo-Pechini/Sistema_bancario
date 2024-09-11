@@ -11,7 +11,8 @@ def deposito(operacoes):
                     print('\033[31mDigite um valor valido para deposito\033[m')
         else:
              return '\033[31mErro!! Limite de operações diarias atingido\033[m'
-        
+
+
 def saque(operacoes, saldo_total):
     while True:
         if operacoes < 10:
@@ -28,6 +29,12 @@ def saque(operacoes, saldo_total):
         else:
             return '\033[31mErro!! Limite de operações diarias atingido\033[m'
 
+
 def extrato(extrato):
     for e, v in enumerate(extrato):
         print(f'Nº {e+1} | {v}')
+
+
+
+def cadastrarUsuarios():
+    pass
