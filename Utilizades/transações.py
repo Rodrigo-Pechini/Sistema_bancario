@@ -37,12 +37,14 @@ def extrato(extrato):
 
 
 def cadastrarUsuarios(usuarios):
-
-    cpf = validador.validadorInt('Digite seu CPF: ')
     pessoa  = {}
     cadastro = {}
+    cpf = validador.validadorInt('Digite seu CPF: ')
+    if usuarioCadastrados(usuarios=usuarios, cpf=cpf ):
+        return print('Usario ja cadastrado')
     pessoa["nome"] = str(input('Digite seu nome: '))
     pessoa["ano"] = validador.validadorInt('Digite o ano de nascimento: (XXXX) ')
+    pessoa['saldo'] = 0
     cadastro[cpf] = pessoa
 
     return cadastro
@@ -53,7 +55,7 @@ def mostrarUsuario(usuarios):
         for i in u.keys():
             print(f"CPF = {i} | nome = {u[i]['nome']} | ano = {u[i]['ano']}")
 
-"""
+
 def usuarioCadastrados(usuarios, cpf):
     rps = False
     for u in usuarios:
@@ -61,4 +63,3 @@ def usuarioCadastrados(usuarios, cpf):
             if i == cpf:
                 rps = True
     return rps
-        """
