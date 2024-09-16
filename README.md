@@ -1,4 +1,5 @@
-# Sistema bancario
+# Sistema bancario em andamento
+
 Um progrma de sistema bancario simples, com funções de deposito, saque e extrato.
 
 O programa analisa as entradas do usuario para saber se estão certas ou não.
